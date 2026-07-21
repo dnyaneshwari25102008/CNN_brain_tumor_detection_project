@@ -7,3 +7,4 @@ imbalanced-learn==0.14.2
 tensorflow==2.21.0
 requests==2.34.2
 opencv-python-headless==5.0.0
+pillow==12.2.0
