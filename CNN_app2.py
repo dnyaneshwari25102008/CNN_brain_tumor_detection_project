@@ -16,6 +16,21 @@ with st.sidebar:
         "This app uses a CNN model to detect brain tumors from MRI images."
     )
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #EAF4FF;
+    }
+
+    h1, h2, h3, p, label, span {
+        color: white !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 uploaded_file = st.file_uploader(
     "Upload an Image", type=["jpg", "jpeg", "png"]
 )
