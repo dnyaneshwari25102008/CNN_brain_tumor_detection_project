@@ -8,4 +8,3 @@ tensorflow==2.21.0
 requests==2.34.2
 opencv-python-headless==5.0.0.93
 pillow==12.2.0
-python==3.13
