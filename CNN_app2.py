@@ -1,33 +1,37 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
 from PIL import Image
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.models import load_model
+import tensorflow as tf
 
-model = load_model("brain_final.tflite")
+interpreter = tf.lite.Interpreter(model_path="brain_final.tflite")
+interpreter.allocate_tensors()
 
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
 
-st.title("Brain tumor Detection")
+st.title("Brain Tumor Detection")
 
-uploaded_file = st.file_uploader("Upload an Image ",type = ["jpg","jpeg","png"])
+uploaded_file = st.file_uploader(
+    "Upload an Image", type=["jpg", "jpeg", "png"]
+)
 
 if uploaded_file is not None:
     st.image(uploaded_file)
 
-    img = Image.open(uploaded_file)
+    img = Image.open(uploaded_file).convert("RGB")
+    img = img.resize((128, 128))
 
-    img = img.resize((128,128))  # resize image to 128 , 128 as this size we ussed while training
+    img_array = np.array(img, dtype=np.float32) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
 
-    img_array = image.img_to_array(img) / 255.0 #create array of uploaded image and normalise it
-   
-    img_array = np.expand_dims(img_array,axis  = 0)  # converts to expected dimension i.e 1,128,128
+    interpreter.set_tensor(input_details[0]['index'], img_array)
+    interpreter.invoke()
 
-    prediction = model.predict(img_array)
+    prediction = interpreter.get_tensor(output_details[0]['index'])
 
     prob = prediction[0][0]
 
-    if prob > 0.5 :
-        st.success("Yes you have brain tumor")
-    else :
-        st.success("No you dont have brain tumor")
+    if prob > 0.5:
+        st.success("Yes, you have a brain tumor")
+    else:
+        st.success("No, you don't have a brain tumor")
