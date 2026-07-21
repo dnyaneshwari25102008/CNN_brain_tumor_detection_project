@@ -65,6 +65,6 @@ if uploaded_file is not None:
     prob = prediction[0][0]
 
     if prob > 0.5:
-        st.success("NO, you have a brain tumor")
+        st.error("YES, you have a brain tumor")
     else:
-        st.success("YES, you don't have a brain tumor")
+        st.success("NO, you don't have a brain tumor")
