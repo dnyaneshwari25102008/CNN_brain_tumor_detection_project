@@ -9,7 +9,7 @@ interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
-st.title("Brain Tumor Detection")
+st.title("Brain Tumor Detection 🧠")
 
 uploaded_file = st.file_uploader(
     "Upload an Image", type=["jpg", "jpeg", "png"]
