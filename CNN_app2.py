@@ -9,15 +9,7 @@ from PIL import Image
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 
-MODEL_PATH="brain_final.keras"
-
-if not os.path.exists(MODEL_PATH):
-    url="https://drive.google.com/file/d/1Bumn4TmX9ShBDZYYZk1fgOsqUhAfwQ6r/view?usp=sharing"
-    r=request.get(url)
-    with open(MODEL_PATH,"wb") as f:
-        f.write(r.contect)
-
-model = load_model("brain_final.keras")
+model = load_model("brain_final.tflite")
 
 
 st.title("Brain tumor Detection")
