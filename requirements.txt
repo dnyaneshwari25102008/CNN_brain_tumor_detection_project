@@ -2,3 +2,4 @@ numpy==2.4.6
 Streamlit==1.58.0
 Pillow==12.2.0
 TensorFlow==2.21.0
+pandas==3.0.2
