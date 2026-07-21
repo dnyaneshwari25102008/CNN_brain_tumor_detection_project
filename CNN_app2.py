@@ -10,6 +10,11 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 st.title("Brain Tumor Detection 🧠")
+with st.sidebar:
+    st.header("About")
+    st.write(
+        "This app uses a CNN model to detect brain tumors from MRI images."
+    )
 
 uploaded_file = st.file_uploader(
     "Upload an Image", type=["jpg", "jpeg", "png"]
