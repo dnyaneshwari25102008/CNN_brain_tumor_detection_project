@@ -1,17 +1,9 @@
-import numpy as np
-import pandas as pd
-import sklearn
-import streamlit as st
-import matplotlib as plt
-import imblearn 
-import requests
+import streamlit
+import numpy
+import PIL
 import tensorflow
 
-print(np.__version__)
-print(pd.__version__)
-print(sklearn.__version__)
-print(st.__version__)
-print(plt.__version__)
-print(imblearn.__version__)
-print(requests.__version)
-print(tensorflow.__version)
+print("Streamlit:", streamlit.__version__)
+print("NumPy:", numpy.__version__)
+print("Pillow:", PIL.__version__)
+print("TensorFlow:", tensorflow.__version__)
