@@ -16,6 +16,17 @@ with st.sidebar:
         "This app uses a CNN model to detect brain tumors from MRI images."
     )
 
+st.markdown("""
+<style>
+[data-testid="stSidebar"] {
+    background-color: #1C2541;
+}
+
+[data-testid="stSidebar"] * {
+    color: white !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 <style>
